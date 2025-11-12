@@ -6,7 +6,7 @@ class FireContactService {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
   Future<void> addNote(String name,String phone,String email,bool favorite) async {
-    await _db.collection('contact').add({
+    await _db.collection('examen2').add({
       'name': name,
       'phone': phone,
       'email': email,
@@ -17,13 +17,13 @@ class FireContactService {
 
 
   Stream<QuerySnapshot> getNoteStream() {
-    return _db.collection('contact').orderBy('createAt', descending: true).snapshots();
+    return _db.collection('examen2').orderBy('createAt', descending: true).snapshots();
   }
 
 
 
   Future<void> updateNote(String id, String name,String phone,String email,bool favorite) async{
-  await _db.collection('contact').doc(id).update({ 
+  await _db.collection('examen2').doc(id).update({ 
     'name': name,     
     'phone': phone,
       'email': email,
@@ -32,7 +32,7 @@ class FireContactService {
 }
 
 Future<void> deleteNote(String id) async{
-  await _db.collection('contact').doc(id).delete();
+  await _db.collection('examen2').doc(id).delete();
 }
 
 }
